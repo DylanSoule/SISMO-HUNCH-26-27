@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel ="icon" href="./Sismo_logo_final-circle.png" class = "logo" />
 </head>
+
 <body>
     <div class="header-section">
         <img src="./Sismo_logo_final-circle.png" alt="SISMO logo">
@@ -33,7 +34,83 @@
         </div>
     </section>
 
-    <footer>
+    <section class="content">
+        <section class="card">
+            <div class="image-slot"></div>
+            <h2>feature 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+
+        <section class="card">
+            <div class="image-slot"></div>
+            <h2>feature 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+
+        <section class="card">
+            <div class="image-slot"></div>
+            <h2>feature 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+
+        <section class="card">
+            <div class="image-slot"></div>
+            <h2>feature 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </section>
+    </section>
+    <section class="third-box">
+        <h2>Cool Title</h2>
+
+        <nav class="nav-box">
+            <button class="active" data-panel="timeline-panel">
+                Timeline?
+            </button>
+
+            <button data-panel="team-panel">
+                Team
+            </button>
+
+            <button data-panel="product-panel">
+                Product
+            </button>
+        </nav>
+
+        <div class="tab-content">
+            <section id="timeline-panel" class="tab-panel active">
+                <h3>Timeline</h3>
+                <p>timeline goes here</p>
+            </section>
+
+            <section id="team-panel" class="tab-panel">
+                <div class="team-cards">
+                    <section class="card">
+                        <div class="image-slot"></div>
+                        <h2>Dylan Soule</h2>
+                        <p>dylan descrption</p>
+                    </section>
+
+                    <section class="card">
+                        <div class="image-slot"></div>
+                        <h2>Austin Canon</h2>
+                        <p>austin description</p>
+                    </section>
+
+                    <section class="card">
+                        <div class="image-slot"></div>
+                        <h2>Lucca Townsend</h2>
+                        <p>Lucca description</p>
+                    </section>
+                </div>
+            </section>
+
+            <section id="product-panel" class="tab-panel">
+                <h3>Product</h3>
+                <p>product page here</p>
+            </section>
+        </div>
+    </section>
+        <footer>
         <h3>View Our Project on GitHub</h3>
         <p>Check out the source code, documentation, and contribute to the SISMO project.</p>
         <a href="https://github.com/DylanSoule/SISMO-HUNCH-26-27" target="_blank">
@@ -44,5 +121,26 @@
             Lucca Townsend • Dylan Soule • Austin Canon
         </p>
     </footer>
+<script>
+    const buttons = document.querySelectorAll(".nav-box button");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const selectedPanel = button.dataset.panel;
+
+            buttons.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            panels.forEach(panel => {
+                panel.classList.remove("active");
+            });
+
+            button.classList.add("active");
+            document.getElementById(selectedPanel).classList.add("active");
+        });
+    });
+</script>
 </body>
 </html>
