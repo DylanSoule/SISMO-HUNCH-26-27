@@ -13,7 +13,9 @@
 ### Topology Design
 ---
 For a basic topology design we simulated a single pc on the earth side and the moon side, each connected through a switch and a router to allow for scalability in the future
+
 ![basic topology image](assets/basic-topology.png)
+
 ### Network Design
 ---
 Earth - 10.10.10.10/24
