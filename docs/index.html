@@ -12,13 +12,19 @@
     <div class="header-section">
         <img src="./Sismo_logo_final-circle.png" alt="SISMO logo">
         <h1>SISMO</h1>
-        <nav class="nav-bar" aria-label="Main navigation">
-            <a href="team.html">Team</a>
+        <nav class="nav-bar timeline-nav">
+            <a href="#timeline-panel" class="scroll-button">Timeline</a>
         </nav>
-        <nav class="nav-bar" aria-label="Main navigation">
-            <a href="problem.html">Problem</a>
+
+        <nav class="nav-bar">
+            <a href="#team-panel" class="scroll-button">Team</a>
         </nav>
-        <nav class="nav-bar github-nav" aria-label="Main navigation">
+
+        <nav class="nav-bar">
+            <a href="#product-panel" class="scroll-button">Product</a>
+        </nav>
+
+        <nav class="nav-bar github-nav">
             <a href="https://github.com/DylanSoule/SISMO-HUNCH-26-27" target="_blank">Github</a>
         </nav>
     </div>
@@ -63,11 +69,12 @@
         <h2>Cool Title</h2>
 
         <nav class="nav-box">
-            <button class="active" data-panel="timeline-panel">
+            <button class="active" data-panel="timeline-panel" id="timeline-target">
                 Timeline?
             </button>
 
             <button data-panel="team-panel">
+
                 Team
             </button>
 
@@ -110,7 +117,28 @@
             </section>
         </div>
     </section>
-        <footer>
+
+    <section class="fourth-box">
+        <h2>gns3/rresearch/cable diagram</h2>
+        <div class="carousel">
+            <div class="slide" id="slide-1">
+                <div class="slide-image-slot" aria-label="Image slot for slide 1"></div>
+                <p>Add a description for the first image here.</p>
+            </div>
+            <div class="slide" id="slide-2">
+                <div class="slide-image-slot" aria-label="Image slot for slide 2"></div>
+                <p>Add a description for the second image here.</p>
+            </div>
+            <div class="slide" id="slide-3">
+                <div class="slide-image-slot" aria-label="Image slot for slide 3"></div>
+                <p>Add a description for the third image here.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
         <h3>View Our Project on GitHub</h3>
         <p>Check out the source code, documentation, and contribute to the SISMO project.</p>
         <a href="https://github.com/DylanSoule/SISMO-HUNCH-26-27" target="_blank">
@@ -124,6 +152,9 @@
 <script>
     const buttons = document.querySelectorAll(".nav-box button");
     const panels = document.querySelectorAll(".tab-panel");
+    const scrollButtons = document.querySelectorAll(".scroll-button");
+    const carousel = document.querySelector(".carousel");
+    const slides = document.querySelectorAll(".slide");
 
     buttons.forEach(button => {
         button.addEventListener("click", () => {
@@ -139,6 +170,48 @@
 
             button.classList.add("active");
             document.getElementById(selectedPanel).classList.add("active");
+        });
+    });
+
+    scrollButtons.forEach(link => {
+        link.addEventListener("click", event => {
+            event.preventDefault();
+
+            const panelId = link.getAttribute("href").substring(1);
+            const targetButton = document.querySelector(
+                `[data-panel="${panelId}"]`
+            );
+
+            if (!targetButton) {
+                return;
+            }
+
+            targetButton.click();
+
+            document.querySelector(".third-box").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+    slides.forEach(slide => {
+        slide.addEventListener("click", event => {
+            const clickedSlide = event.currentTarget;
+            const currentIndex = Math.round(
+                carousel.scrollLeft / (clickedSlide.offsetWidth + 16)
+            );
+            const clickedIndex = Array.from(slides).indexOf(clickedSlide);
+
+            if (clickedIndex === currentIndex) {
+                return;
+            }
+
+            clickedSlide.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
         });
     });
 </script>
