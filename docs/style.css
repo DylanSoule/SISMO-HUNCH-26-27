@@ -5,10 +5,23 @@ body {
     margin: 0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    color: #14213d;
+}
+
+.hamburger-menu,
+.nav-menu {
+    display: none;
 }
 
 .header-section {
@@ -60,7 +73,7 @@ body {
 }
 
 .security-section {
-    width: 98%;
+    width: calc(100% - 26px);
     min-height: 400px;
     display: flex;
     position: relative;
@@ -72,6 +85,7 @@ body {
     margin: 0 0 40px 13px;
     background: url(first_bg.png) center / cover no-repeat;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 
@@ -79,9 +93,9 @@ body {
     position: absolute;
     width: 150px;
     height: 150px;
-    right: 298px;
+    left: 77.8%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
 }
 
 .security-content {
@@ -97,13 +111,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 250px;
+    width: clamp(180px, 20vw, 220px);
     min-height: 60px;
     height: auto;
-    offset-path: ellipse(230px 140px at 78% 50%);
+    offset-path: ellipse(190px 140px at 77.8% 50%);
+    offset-anchor: 50% 50%;
     offset-distance: 0%;
     offset-rotate: 0deg;
-    animation: spinOrbit 20s linear infinite;
+    animation: spinOrbit 24s linear infinite;
 }
 
 .looping-box h1 {
@@ -133,15 +148,19 @@ body {
 }
 
 .looping-box:nth-child(3) {
-    animation-delay: -5s;
+    animation-delay: -6s;
 }
 
 .looping-box:nth-child(4) {
-    animation-delay: -10s;
+    animation-delay: -12s;
 }
 
 .looping-box:nth-child(5) {
-    animation-delay: -15s;
+    animation-delay: -18s;
+}
+
+.looping-box:nth-child(6) {
+    animation-delay: 0s;
 }
 
 @keyframes spinOrbit {
@@ -180,10 +199,16 @@ body {
     padding: 30px;
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
     background: url(second_bg.png) center / cover no-repeat;
     border-radius: 10px;
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+    .content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .content > .card {
@@ -196,13 +221,24 @@ body {
     border-radius: 10px;
 }
 
-.image-slot {
+.image-slot img {
+    object-fit: contain;
     height: 260px;
     background: #c8c8d0;
 }
 
+.image-slot {
+    height: 326px;
+    background: #c8c8d0;
+}
+
+.card hr  {
+    height: 2px
+}
+
 .card h2,
 .card p {
+
     margin: 16px 20px;
 }
 
@@ -336,7 +372,9 @@ body {
 .team-cards .card p {
     margin: 16px 0;
     color: black;
+    font-family: "Tahoma", sans-serif;
     text-align: left;
+    font-size: 1.3em;
 }
 
 
@@ -498,3 +536,336 @@ footer a:hover {
     display: block;
 }
 
+.lightbox {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 767px) {
+
+    .hamburger-menu {
+        display: flex;
+        position: fixed;
+        top: 14px;
+        left: 14px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        background: #5a5a5a;
+        z-index: 1001;
+    }
+
+    .hamburger-menu i {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 2px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+.hamburger-menu.active i:nth-child(1) {
+    -webkit-animation: inT 0.8s forwards;
+    animation: inT 0.8s forwards;
+}
+
+.hamburger-menu.active i:nth-child(2) {
+    -webkit-animation: inM 0.8s forwards;
+    animation: inM 0.8s forwards;
+}
+
+.hamburger-menu.active i:nth-child(3) {
+    -webkit-animation: inBtm 0.8s forwards;
+    animation: inBtm 0.8s forwards;
+}
+
+.hamburger-menu.animated:not(.active) i:nth-child(1) {
+    -webkit-animation: outT 0.8s forwards;
+    animation: outT 0.8s forwards;
+}
+
+.hamburger-menu.animated:not(.active) i:nth-child(2) {
+    -webkit-animation: outM 0.8s forwards;
+    animation: outM 0.8s forwards;
+}
+
+.hamburger-menu.animated:not(.active) i:nth-child(3) {
+    -webkit-animation: outBtm 0.8s forwards;
+    animation: outBtm 0.8s forwards;
+}
+
+
+@-webkit-keyframes inM {
+    50% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(45deg); }
+}
+
+@keyframes inM {
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(45deg); }
+}
+
+@-webkit-keyframes outM {
+    0% { -webkit-transform: rotate(45deg); }
+    50% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+
+@keyframes outM {
+    0% { transform: rotate(45deg); }
+    50% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@-webkit-keyframes inT {
+    0% { -webkit-transform: translateY(0px) rotate(0deg); }
+    50% { -webkit-transform: translateY(9px) rotate(0deg); }
+    100% { -webkit-transform: translateY(9px) rotate(135deg); }
+}
+
+@keyframes inT {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(9px) rotate(0deg); }
+    100% { transform: translateY(9px) rotate(135deg); }
+}
+
+@-webkit-keyframes outT {
+    0% { -webkit-transform: translateY(9px) rotate(135deg); }
+    50% { -webkit-transform: translateY(9px) rotate(0deg); }
+    100% { -webkit-transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes outT {
+    0% { transform: translateY(9px) rotate(135deg); }
+    50% { transform: translateY(9px) rotate(0deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@-webkit-keyframes inBtm {
+    0% { -webkit-transform: translateY(0px) rotate(0deg); }
+    50% { -webkit-transform: translateY(-9px) rotate(0deg); }
+    100% { -webkit-transform: translateY(-9px) rotate(135deg); }
+}
+
+@keyframes inBtm {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-9px) rotate(0deg); }
+    100% { transform: translateY(-9px) rotate(135deg); }
+}
+
+@-webkit-keyframes outBtm {
+    0% { -webkit-transform: translateY(-9px) rotate(135deg); }
+    50% { -webkit-transform: translateY(-9px) rotate(0deg); }
+    100% { -webkit-transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes outBtm {
+    0% { transform: translateY(-9px) rotate(135deg); }
+    50% { transform: translateY(-9px) rotate(0deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+    .nav-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: min(82vw, 200px);
+        height: 100vh;
+        height: 100dvh;
+        padding: 82px 20px 24px;
+        background: #5a5a5a;
+        transition: left 0.3s ease, visibility 0s 0.3s;
+        z-index: 1000;
+        box-shadow: 2px 0 18px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .nav-menu.active {
+        left: 0;
+        visibility: visible;
+        pointer-events: auto;
+        transition: left 0.3s ease, visibility 0s 0s;
+    }
+
+    .nav-menu a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 14px 12px;
+        margin: 4px 0;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+        font-size: 1.05rem;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a:focus-visible {
+        background: rgba(255, 255, 255, 0.14);
+    }
+
+    .header-section {
+        justify-content: center;
+        min-height: 64px;
+        margin-bottom: 18px;
+        padding: 12px 20px;
+    }
+
+    .header-section h1 {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+
+    .header-section .nav-bar {
+        display: none;
+    }
+
+    .security-section,
+    .content,
+    .third-box,
+    .fourth-box {
+        width: calc(100% - 20px);
+        margin: 0 10px 20px;
+        padding: 16px;
+    }
+
+    .security-section {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        text-align: center;
+        gap: 16px;
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .security-content {
+        grid-column: 1 / -1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .security-logo {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        grid-column: 1 / -1;
+        justify-self: center;
+        left: auto;
+        top: auto;
+        right: auto;
+        transform: none;
+    }
+
+    .looping-box {
+        width: 100%;
+        offset-path: none;
+        position: relative;
+        top: auto;
+        left: auto;
+        animation: none;
+    }
+
+    .content,
+    .third-box {
+        grid-template-columns: 1fr;
+    }
+
+    .content {
+        gap: 14px;
+    }
+
+    .third-box {
+        row-gap: 16px;
+    }
+
+    .third-box h2,
+    .fourth-box h2 {
+        font-size: 1.8em;
+    }
+
+    .nav-box {
+        width: 100%;
+    }
+
+    .nav-box button {
+        font-size: 1em;
+        padding: 11px 5px;
+    }
+
+    .team-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .fourth-box {
+        min-height: 560px;
+        padding: 20px 0;
+    }
+
+    .carousel {
+        min-height: 440px;
+        padding: 0 6%;
+        scroll-padding: 0 6%;
+    }
+
+    .slide {
+        flex-basis: 88%;
+        padding: 16px;
+    }
+
+    .slide-image-slot {
+        min-height: 260px;
+    }
+
+    .lightbox img {
+        max-width: 94%;
+        max-height: 80%;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 16px;
+        font-size: 34px;
+    }
+}
