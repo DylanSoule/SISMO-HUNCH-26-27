@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISMO</title>
     <link rel="stylesheet" href="style.css">
-    <link rel ="icon" href="./Sismo_logo_final-circle.png" class = "logo" />
+    <link rel ="icon" href="./Sismo_logo.png" class = "logo" />
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         </nav>
 
         <nav class="nav-bar github-nav">
-            <a href="https://github.com/DylanSoule  /SISMO-HUNCH-26-27" target="_blank">Github</a>
+            <a href="https://github.com/DylanSoule/SISMO-HUNCH-26-27" target="_blank">Github</a>
         </nav>
     </div>
 
@@ -101,13 +101,15 @@
                 <div class="slide-image-slot" >
                     <img src="cable_diagram.png" alt="Cable Diagram">
                 </div>
-                <p>The diagram shows how the Earth facility, space segment, and Moon base are connected. It separates the network into four different connection types, and uses different connection types depending on the distance, speed, reliability, and mobility needed. The project requirements specifically call for fiber as the backbone, Ethernet for internal connections, wireless for devices, and Free Space Laser for space communication.
+                <p>This diagram shows how the Earth facility, space segment, and Moon base are connected. It separates the network into four different connection types, and uses different connection types depending on the distance, speed, reliability, and mobility needed. The project requirements specifically call for fiber as the backbone, Ethernet for internal connections, wireless for devices, and Free Space Laser for space communication.
 
 </p>
             </div>
             <div class="slide" id="slide-2">
-                <div class="slide-image-slot" ></div>
-                <p>Add a description for the second image here.</p>
+                <div class="slide-image-slot" >
+                    <img src="basic-topology.png" alt="Topology Diagram">
+                </div>
+                <p>This diagram shows the network topology for our project. We simulated a single pc on the earth side and the moon side, each connected through a switch and a router to allow for scalability in the future. There is a separate link IP to broadcast, and only need two addresses: 10.254.0.1 and 10.254.0.2 for the routers sending info. Networks are linked through OSPF so they work dynamically instead of defining explicit IP links.</p>
             </div>
             <div class="slide" id="slide-3">
                 <div class="slide-image-slot" ></div>
@@ -121,13 +123,12 @@
         <h2>More Info</h2>
 
         <nav class="nav-box">
-            <button class="active" data-panel="timeline-panel" id="timeline-target">
-                Timeline
+            <button class="active" data-panel="team-panel" id="team-target">
+                Team
             </button>
 
-            <button data-panel="team-panel">
-
-                Team
+            <button data-panel="timeline-panel" id="timeline-target">
+                Timeline
             </button>
 
             <button data-panel="product-panel">
@@ -136,12 +137,7 @@
         </nav>
 
         <div class="tab-content">
-            <section id="timeline-panel" class="tab-panel active">
-                <h3>Timeline</h3>
-                <p>timeline goes here</p>
-            </section>
-
-            <section id="team-panel" class="tab-panel">
+            <section id="team-panel" class="tab-panel active">
                 <div class="team-cards">
                     <section class="card">
                         <div class="image-slot">
@@ -149,7 +145,7 @@
                         </div>
                         <h2>Dylan Soule</h2>
                         <hr>
-                        <p>dylan descrption</p>
+                        <p>Dylan is a high school senior and in his second year at the Warren tech computer science/cybersecurity program. In this project, he contributed to the simulation and testing of the project in GNS3, our chosen simulation software.</p>
                     </section>
 
                     <section class="card">
@@ -158,7 +154,7 @@
                         </div>
                         <h2>Austin Canon</h2>
                         <hr>
-                        <p>austin description</p>
+                        <p>Austin is a high school junior at Warrren Tech in the Computer Science/Cybersecurity program. In this project, he contributed by designing the cable diagram and network layout, and how data travels between earth and the moon.</p>
                     </section>
 
                     <section class="card">
@@ -167,14 +163,19 @@
                         </div>
                         <h2>Lucca Townsend</h2>
                         <hr>
-                        <p>A high school student at Warren Tech specializing in computer science/cybersecurity. Contributed by designing and creating the website for SISMO, as well as overall team support. </p>
+                        <p>Lucca is a high school student at Warren Tech specializing in computer science/cybersecurity. He contributed by designing and creating the website for SISMO, as well as overall team support and coordination. </p>
                     </section>
                 </div>
             </section>
 
+            <section id="timeline-panel" class="tab-panel">
+                <h3>Timeline</h3>
+                <p>Timeline is under contruction!</p>
+            </section>
+
             <section id="product-panel" class="tab-panel">
                 <h3>Product</h3>
-                <p>product page here</p>
+                <p>Product page is under construction!</p>
             </section>
         </div>
     </section>
