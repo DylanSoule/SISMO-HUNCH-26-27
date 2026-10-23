@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SISMO</title>
     <link rel="stylesheet" href="style.css">
-    <link rel ="icon" href="./Sismo_logo.png" class = "logo" />
+    <link rel="icon" href="SISMO_Logo.png" type="image/png">
 </head>
 
 <body>
-        <button class="hamburger-menu" id="hamburger" type="button" aria-label="Open navigation" aria-controls="navMenu" aria-expanded="false" onclick="toggleMenu()">
+        <button class="hamburger-menu" id="hamburger" type="button" onclick="toggleMenu()">
             <i></i>
             <i></i>
             <i></i>
@@ -24,7 +24,7 @@
 
     <div class="header-section">
         <h1>SISMO</h1>
-        <nav class="nav-bar timeline-nav">
+        <nav class="nav-bar">
             <a href="#timeline-panel" class="scroll-button">Timeline</a>
         </nav>
 
@@ -123,11 +123,11 @@
         <h2>More Info</h2>
 
         <nav class="nav-box">
-            <button class="active" data-panel="team-panel" id="team-target">
+            <button class="active" data-panel="team-panel">
                 Team
             </button>
 
-            <button data-panel="timeline-panel" id="timeline-target">
+            <button data-panel="timeline-panel">
                 Timeline
             </button>
 
@@ -244,8 +244,6 @@
             const hamburger = document.getElementById('hamburger');
             menu.classList.remove('active');
             hamburger.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-            hamburger.setAttribute('aria-label', 'Open navigation');
         });
     });
 
@@ -302,8 +300,6 @@ const lightbox = document.getElementById('lightbox');
                 hamburger.classList.add('animated');
                 menu.classList.toggle('active', isOpen);
                 hamburger.classList.toggle('active', isOpen);
-                hamburger.setAttribute('aria-expanded', isOpen);
-                hamburger.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
             }
 
 
@@ -313,8 +309,6 @@ const lightbox = document.getElementById('lightbox');
                 if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
                     menu.classList.remove('active');
                     hamburger.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                    hamburger.setAttribute('aria-label', 'Open navigation');
                 }
             });
 </script>
